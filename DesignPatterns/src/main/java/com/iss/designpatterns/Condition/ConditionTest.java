@@ -1,5 +1,7 @@
 package com.iss.designpatterns.Condition;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -10,6 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @create: 2023-06-29 20:02
  **/
 
+@Slf4j
 public class ConditionTest {
     public static void main(String[] args) throws InterruptedException {
         Lock lock = new ReentrantLock();
@@ -25,7 +28,7 @@ public class ConditionTest {
                     Thread.sleep(2000);
                     System.out.println("睡眠结束");
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    log.error("",e);
                 }
                 lock.unlock();
             }
