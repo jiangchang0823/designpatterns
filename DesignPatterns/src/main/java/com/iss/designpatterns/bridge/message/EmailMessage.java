@@ -14,5 +14,9 @@ public class EmailMessage implements IMessage {
     @Override
     public void send(String message, String toUser) {
         log.info("使用邮件发送消息：{},给接收人：{}", message, toUser);
+
     }
+
+    // 快排
+
 }

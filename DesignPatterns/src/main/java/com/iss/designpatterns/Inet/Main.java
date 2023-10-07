@@ -1,10 +1,10 @@
 package com.iss.designpatterns.Inet;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author VODE CODC
@@ -15,12 +15,32 @@ import java.nio.channels.SocketChannel;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        // Runnable runnable = () -> System.out.println(Thread.currentThread().getName());
+        // Runnable multiStatement = () ->{
+        //     System.out.println("statement1");
+        //     System.out.println("statement2");
+        // };
+        // Predicate<Long> predicate = (Long s) -> true;
+        // Supplier<Integer> supplier = () -> {
+        //     System.out.println("i will give you a string");
+        //     return 100;
+        // };
+        // BinaryOperator<Long> binaryOperator =  (l1, l2) -> l1 + l2;
+        // System.out.println("---");
 
+        // Stream<String> stringStream = Stream.of("one","two","three","four","five");
+        // long count = stringStream.count();
+        // System.out.println(count);
+        // Stream.of();
 
-        ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
-        SocketAddress socketAddress = new InetSocketAddress(80);
-        serverSocketChannel.bind(socketAddress);
-        SocketChannel socketChannel = serverSocketChannel.accept();
+        // Stream<String> stringStream = Stream.of("one","two","three","four","five");
+        // Map<Integer, Set<Integer>> result = stringStream.collect(Collectors.groupingBy(s -> s.length(), Collectors.mapping(s -> s.indexOf("o"), Collectors.toSet())));
+        // System.out.println("----");
+
+        Stream<String> stringStream = Stream.of("one", "two", "three", "four", "five");
+        Map<Boolean, Set<String>> result = stringStream.collect(Collectors.partitioningBy(s -> s.length() > 3, Collectors.toSet()));
+        System.out.println("----");
+
     }
 
 }
